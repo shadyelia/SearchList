@@ -45,7 +45,7 @@ export class CrudService {
   }
 
   // Delete User
-  DeleteTicket(id: string) { 
+  DeleteTicket(id: string) {
     this.ticketRef = this.db.object('tickets-list/' + id);
     this.ticketRef.remove();
   }

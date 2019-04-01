@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <mat-form-field class="col-md-4">
-      <label>Select Tyep</label>
+      <label>Select Type</label>
       <mat-select [(ngModel)]="selectedValue" name="type">
         <mat-option
           (click)="filldata()"
@@ -12,11 +12,11 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
-  </div>
-</div>
 
-<div>
-  <ul *ngFor="let ticket of tickets">
-    <li>{{ ticket.Name }}</li>
-  </ul>
+    <div class="col-md-8">
+      <ul *ngFor="let ticket of tickets">
+        <li>{{ ticket.Name }}</li>
+      </ul>
+    </div>
+  </div>
 </div>

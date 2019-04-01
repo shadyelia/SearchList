@@ -23,6 +23,7 @@ export class SearchListComponent implements OnInit {
   constructor(private db: AngularFireDatabase) {}
 
   filldata() {
+    this.tickets = [];
     this.db
       .list('/tickets')
       .valueChanges()

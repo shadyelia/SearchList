@@ -3,18 +3,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 // Import all the components for which navigation service has to be activated
-import { SearchListComponent } from '../../components/search-list/search-list.component'
-import { AddTicketComponent } from '../../components/add-ticket/add-ticket.component'
+import { SearchListComponent } from '../../components/search-list/search-list.component';
+import { AddTicketComponent } from '../../components/add-ticket/add-ticket.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/search-list', pathMatch: 'full' },
   { path: 'search-list', component: SearchListComponent },
-  { path: 'add-ticket', component: AddTicketComponent },
+  { path: 'add-ticket', component: AddTicketComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { AngularFireDatabase } from '@angular/fire/database';
 
 export interface Type {
   value: string;
@@ -11,19 +11,30 @@ export interface Type {
   templateUrl: './search-list.component.html',
   styleUrls: ['./search-list.component.css']
 })
-
-
 export class SearchListComponent implements OnInit {
   selectedValue: string;
 
+  tickets = [];
   types: Type[] = [
-    {value: 'fight', viewValue: 'Fight'},
-    {value: 'fire', viewValue: 'fire'},
+    { value: 'Fight', viewValue: 'Fight' },
+    { value: 'Fire', viewValue: 'Fire' }
   ];
 
-  constructor() { }
+  constructor(private db: AngularFireDatabase) {}
 
-  ngOnInit() {
+  filldata() {
+    this.db
+      .list('/tickets')
+      .valueChanges()
+      .subscribe(res => {
+        res.forEach(element => {
+          if (element['Type'] === this.selectedValue) {
+            this.tickets.push(element);
+          }
+        });
+        console.log(this.tickets);
+      });
   }
 
+  ngOnInit() {}
 }

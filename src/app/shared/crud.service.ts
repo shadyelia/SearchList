@@ -19,7 +19,7 @@ export class CrudService {
     this.ticketsRef.push({
       name: ticket.name,
       email: ticket.description,
-      ID: ticket.ID
+      type: ticket.type
     });
   }
 
@@ -40,7 +40,7 @@ export class CrudService {
     this.ticketRef.update({
       name: ticket.name,
       email: ticket.description,
-      ID: ticket.ID
+      type: ticket.type
     });
   }
 

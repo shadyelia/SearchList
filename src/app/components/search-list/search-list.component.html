@@ -1,3 +1,13 @@
-<p>
-  search-list works!
-</p>
+
+<div class="container">
+  <div class="row">
+   <mat-form-field class="col-md-4">
+     <label>Select Tyep</label>
+     <mat-select [(ngModel)]="selectedValue" name="type">
+       <mat-option *ngFor="let type of types" [value]="type.value">
+         {{type.viewValue}}
+       </mat-option>
+     </mat-select>
+   </mat-form-field>
+ </div>
+</div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 
@@ -22,16 +23,11 @@ import { FormsModule } from '@angular/forms';
 
 import { MessagingService } from './messaging.service';
 import { AsyncPipe } from '../../node_modules/@angular/common';
+import { MatDialogModule } from '@angular/material';
+import { HttpConfigInterceptor} from './interceptor/httpconfig.interceptor';
 
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyC8Acx2PrlGG32AM5pEairi1v-TTQ0owJA',
-  authDomain: 'searchlist-d4c0e.firebaseapp.com',
-  databaseURL: 'https://searchlist-d4c0e.firebaseio.com',
-  projectId: 'searchlist-d4c0e',
-  storageBucket: 'searchlist-d4c0e.appspot.com',
-  messagingSenderId: '180307103178'
-  };
+
 
 @NgModule({
   declarations: [
@@ -42,7 +38,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // Only required for database features
     AngularFireAuthModule, // Only required for auth features,
     AngularFireStorageModule, // Only required for storage features
@@ -52,9 +48,11 @@ export const firebaseConfig = {
     MatOptionModule,
     MatSelectModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule,
+    HttpClientModule
   ],
-  providers: [MessagingService, AsyncPipe],
+  providers: [MessagingService, AsyncPipe , { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

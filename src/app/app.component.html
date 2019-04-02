@@ -1,5 +1,8 @@
 <app-search-list></app-search-list>
 
+{{ message | async | json }}
+
+
 <!--
 <div class="container">
   <button (click)="request()">request Permission</button>
@@ -7,7 +10,6 @@
 -->
 
 <!-- 
-  {{ message | async | json }}
   <div *ngIf="message">
     <div class="row">
       <pre>{{ message | json }}</pre>
